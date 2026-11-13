@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "web-testing-agent"
+version = "0.1.0"
+description = "Change-triggered web testing agent: a11y, validation, links, security, MCP tests, human-in-loop decisions"
+requires-python = ">=3.10"
+dependencies = [
+  "fastapi>=0.110", "uvicorn[standard]>=0.29", "pydantic>=2.6", "pydantic-settings>=2.2",
+  "beautifulsoup4>=4.12", "lxml>=5.0", "langgraph>=0.2", "httpx>=0.27",
+  "streamlit>=1.33", "pyyaml>=6.0", "mcp>=1.0,<2", "openai>=1.55.3", "rank-bm25>=0.2.2", "qdrant-client>=1.9", "python-multipart>=0.0.9", "numpy", "sentence-transformers>=3.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[tool.setuptools.packages.find]
+include = ["app*", "mcp_server*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
