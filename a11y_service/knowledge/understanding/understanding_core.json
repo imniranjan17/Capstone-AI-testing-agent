@@ -1,0 +1,30 @@
+{
+  "document_id": "wcag-understanding-core",
+  "title": "Understanding WCAG 2.2 (curated notes)",
+  "version": "2.2",
+  "authority": "official_explanatory",
+  "retrieved": "2026-10-29",
+  "note": "Short paraphrased explanatory notes linked to success criteria. Lower authority than the normative criterion; never overrides it.",
+  "sections": [
+    {"parent_sc": "1.1.1", "section_type": "intent", "url": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html",
+     "content": "Text alternatives let assistive technology present non-text content to blind users, deafblind users via braille, and others. Informative images need alt text conveying purpose; decorative images should use an empty alt attribute so screen readers skip them. An img element with no alt attribute is a failure because the file name may be announced instead."},
+    {"parent_sc": "4.1.2", "section_type": "intent", "url": "https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html",
+     "content": "Assistive technology relies on each interface component exposing a name, role and value. A button containing only an icon, with the icon hidden from assistive technology or lacking a text alternative, has no accessible name. Fix with visible text, aria-label, aria-labelledby, or a text alternative on the icon. ARIA attributes must be spelled correctly, use allowed values, and reference IDs that exist."},
+    {"parent_sc": "1.3.1", "section_type": "intent", "url": "https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html",
+     "content": "Structure and relationships shown visually must also be in the markup. A visible label must be programmatically associated with its input using a label element with for/id, by wrapping the control, or via aria-labelledby. Headings should use heading elements in a logical hierarchy without skipped levels, and page regions should use landmarks such as main."},
+    {"parent_sc": "3.3.2", "section_type": "intent", "url": "https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html",
+     "content": "Form controls need a visible label or instructions. A text label placed near an input but not associated with it fails to give assistive technology users the same information; use a label element associated by for/id."},
+    {"parent_sc": "2.4.4", "section_type": "intent", "url": "https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html",
+     "content": "Links need an accessible name that describes their destination or purpose. Empty links, icon-only links without a text alternative, and vague text such as click here or read more are problems unless surrounding programmatic context clarifies the purpose."},
+    {"parent_sc": "3.1.1", "section_type": "intent", "url": "https://www.w3.org/WAI/WCAG22/Understanding/language-of-page.html",
+     "content": "A valid lang attribute on the html element lets screen readers choose the correct pronunciation rules and lets browsers apply language-specific features. Use a valid BCP 47 language tag such as en or fr-CA."},
+    {"parent_sc": "1.4.3", "section_type": "intent", "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+     "content": "Contrast is computed from foreground and background colors as the relative luminance ratio. Normal text needs 4.5:1; large text needs 3:1. A contrast failure can only be asserted when the real computed colors are known."},
+    {"parent_sc": "2.4.1", "section_type": "intent", "url": "https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks.html",
+     "content": "Landmark regions such as main, nav and header let keyboard and screen reader users skip repeated content. A page should expose a main landmark."},
+    {"parent_sc": "2.5.8", "section_type": "intent", "url": "https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html",
+     "content": "Pointer targets should be at least 24 by 24 CSS pixels unless exceptions apply. Evaluation requires rendered geometry, which static HTML does not supply."},
+    {"parent_sc": "2.4.7", "section_type": "intent", "url": "https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html",
+     "content": "Keyboard focus must be visibly indicated. Whether the indicator is perceivable depends on rendered styles and must be checked in a browser."}
+  ]
+}

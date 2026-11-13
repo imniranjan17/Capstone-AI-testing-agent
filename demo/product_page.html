@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>AuraBuds Pro – Wireless Earbuds</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  *{box-sizing:border-box;margin:0;font-family:Segoe UI,Arial,sans-serif}
+  body{background:#0f172a;color:#e2e8f0;line-height:1.6}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:18px 8%;background:#0b1220}
+  nav .logo{font-weight:700;font-size:22px;color:#38bdf8}
+  nav a{color:#cbd5e1;text-decoration:none;margin-left:24px}
+  .hero{padding:110px 8%;background:linear-gradient(135deg,#1e3a8a,#0f172a 60%);display:flex;gap:40px;align-items:center}
+  .hero h1{font-size:48px;line-height:1.15}
+  .hero p{margin:18px 0 28px;color:#94a3b8;max-width:480px}
+  .btn{background:#38bdf8;color:#082f49;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:600}
+  .hero img{width:340px;border-radius:16px}
+  section{padding:70px 8%}
+  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .card{background:#1e293b;padding:26px;border-radius:12px}
+  .card h3{margin-bottom:8px;color:#38bdf8}
+  .contact{background:#0b1220}
+  form{display:grid;gap:14px;max-width:460px;margin-top:20px}
+  input,textarea{padding:12px;border-radius:8px;border:1px solid #334155;background:#1e293b;color:#fff}
+  button{padding:12px;border:0;border-radius:8px;background:#38bdf8;font-weight:600}
+  footer{padding:24px 8%;text-align:center;color:#64748b;font-size:14px}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">AuraBuds</div>
+  <div>
+    <a href="/product_page.html">Home</a>
+    <a href="#features">Features</a>
+    <a href="#">Pricing</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div>
+    <h1>Sound that moves with you.</h1>
+    <p>AuraBuds Pro delivers 40-hour battery life, adaptive noise cancelling and studio-grade audio in a featherweight design.</p>
+    <a class="btn" href="#contact">Order now – $129</a>
+  </div>
+  <img src="/images/aurabuds.png">
+</div>
+
+<section id="features">
+  <h2 style="margin-bottom:24px">Why you'll love them</h2>
+  <div class="features">
+    <div class="card"><h3>Adaptive ANC</h3><p>Blocks up to 98% of ambient noise, then lets voices through when you need them.</p></div>
+    <div class="card"><h3>40h Battery</h3><p>10 hours per charge plus 3 extra charges from the pocket-size case.</p></div>
+    <div class="card"><h3>IPX5 Rated</h3><p>Sweat and splash resistant, built for workouts and rainy commutes.</p></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2>Contact us</h2>
+  <p>Questions or bulk orders? We reply within one business day.</p>
+  <form action="/contact" method="get">
+    <input name="name" type="text" placeholder="Your name">
+    <input name="email" type="text" placeholder="Email address">
+    <textarea name="message" rows="4" placeholder="How can we help?"></textarea>
+    <button>Send message</button>
+  </form>
+</section>
+
+<footer>
+  © 2026 AuraBuds Inc. · <a href="/privacy.html" style="color:#64748b">Privacy</a> ·
+  <a href="https://twitter.com/aurabuds" target="_blank" style="color:#64748b">Twitter</a>
+</footer>
+</body>
+</html>

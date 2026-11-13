@@ -1,0 +1,58 @@
+# Fix guidelines. A finding is auto-suggested ONLY if a guideline matches AND auto_suggest: true
+# AND finding severity <= max_severity AND category is not security AND no MCP failure shares its selector.
+# Otherwise it goes to the human review queue.
+guidelines:
+  - id: react-missing-key
+    rule_ids: [react-missing-key]
+    auto_suggest: true
+    risk: low
+    max_severity: medium
+    fix: "Add a stable unique key to the mapped element, e.g. key={item.id}. Use the index only for static lists."
+  - id: img-missing-alt
+    rule_ids: [image-alt, input-image-alt]
+    auto_suggest: true
+    risk: low
+    max_severity: critical
+    fix: "Add a concise alt attribute describing the image; use alt=\"\" only if it is purely decorative."
+  - id: form-label
+    rule_ids: [label, form-field-label, select-name]
+    auto_suggest: true
+    risk: low
+    max_severity: high
+    fix: "Associate a <label for=ID> with the field (or add aria-label if no visible label is possible)."
+  - id: html-lang
+    rule_ids: [html-has-lang, html-lang-valid]
+    auto_suggest: true
+    risk: low
+    max_severity: high
+    fix: "Add a valid lang attribute to <html>, e.g. <html lang=\"en\">."
+  - id: blank-noopener
+    rule_ids: [blank-no-noopener]
+    auto_suggest: false      # security category: policy always routes to a human; fix text still shown
+    risk: low
+    max_severity: medium
+    fix: "Add rel=\"noopener noreferrer\" to links that use target=\"_blank\"."
+  - id: input-type
+    rule_ids: [input-wrong-type]
+    auto_suggest: true
+    risk: low
+    max_severity: medium
+    fix: "Use the specific input type (email, tel, url, number) so the browser validates the value."
+  - id: empty-href
+    rule_ids: [link-empty-href]
+    auto_suggest: false      # needs product knowledge: where should the link go?
+    risk: medium
+    max_severity: medium
+    fix: "Point the link at a real destination, or use a <button> if it triggers an action."
+  - id: broken-link
+    rule_ids: [broken-link]
+    auto_suggest: false
+    risk: medium
+    max_severity: high
+    fix: "Update or remove the broken URL; confirm the intended target with the content owner."
+  - id: color-contrast
+    rule_ids: [color-contrast]
+    auto_suggest: false      # design decision
+    risk: medium
+    max_severity: high
+    fix: "Adjust foreground/background colors to reach 4.5:1 (3:1 for large text)."

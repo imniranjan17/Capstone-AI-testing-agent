@@ -1,0 +1,368 @@
+[
+ {
+  "case_id": "image-alt-001",
+  "input": "<img src=\"a.png\">",
+  "expected_rule": "image-alt",
+  "expected_verdict": "FAIL",
+  "expected_criteria": [
+   "1.1.1"
+  ],
+  "forbidden_criteria": [],
+  "notes": "img without alt"
+ },
+ {
+  "case_id": "image-alt-002",
+  "input": "<img src=\"a.png\" alt=\"Logo\">",
+  "expected_rule": "image-alt",
+  "expected_verdict": "PASS",
+  "expected_criteria": [],
+  "forbidden_criteria": [],
+  "notes": "img with alt"
+ },
+ {
+  "case_id": "image-alt-003",
+  "input": "<img src=\"a.png\" alt=\"\">",
+  "expected_rule": "image-alt-quality",
+  "expected_verdict": "MANUAL_REVIEW",
+  "expected_criteria": [
+   "1.1.1"
+  ],
+  "forbidden_criteria": [],
+  "notes": "decorative claim needs human confirmation"
+ },
+ {
+  "case_id": "image-alt-004",
+  "input": "<input type=\"image\" src=\"go.png\">",
+  "expected_rule": "input-image-alt",
+  "expected_verdict": "FAIL",
+  "expected_criteria": [
+   "1.1.1"
+  ],
+  "forbidden_criteria": [],
+  "notes": "image input no alt"
+ },
+ {
+  "case_id": "button-name-001",
+  "input": "<button><svg></svg></button>",
+  "expected_rule": "button-name",
+  "expected_verdict": "FAIL",
+  "expected_criteria": [
+   "4.1.2"
+  ],
+  "forbidden_criteria": [],
+  "notes": "icon-only button"
+ },
+ {
+  "case_id": "button-name-002",
+  "input": "<button>Save</button>",
+  "expected_rule": "button-name",
+  "expected_verdict": "PASS",
+  "expected_criteria": [],
+  "forbidden_criteria": [],
+  "notes": "text button"
+ },
+ {
+  "case_id": "button-name-003",
+  "input": "<button aria-label=\"Close\"></button>",
+  "expected_rule": "button-name",
+  "expected_verdict": "PASS",
+  "expected_criteria": [],
+  "forbidden_criteria": [],
+  "notes": "aria-label"
+ },
+ {
+  "case_id": "button-name-004",
+  "input": "<div role=\"button\"></div>",
+  "expected_rule": "button-name",
+  "expected_verdict": "FAIL",
+  "expected_criteria": [
+   "4.1.2"
+  ],
+  "forbidden_criteria": [],
+  "notes": "role button empty"
+ },
+ {
+  "case_id": "label-001",
+  "input": "<input type=\"email\">",
+  "expected_rule": "label",
+  "expected_verdict": "FAIL",
+  "expected_criteria": [
+   "1.3.1",
+   "3.3.2",
+   "4.1.2"
+  ],
+  "forbidden_criteria": [],
+  "notes": "no label"
+ },
+ {
+  "case_id": "label-002",
+  "input": "<label for=\"e\">Email</label><input id=\"e\">",
+  "expected_rule": "label",
+  "expected_verdict": "PASS",
+  "expected_criteria": [],
+  "forbidden_criteria": [],
+  "notes": "for/id"
+ },
+ {
+  "case_id": "label-003",
+  "input": "<label>Email</label><input type=\"email\">",
+  "expected_rule": "label",
+  "expected_verdict": "FAIL",
+  "expected_criteria": [
+   "1.3.1"
+  ],
+  "forbidden_criteria": [],
+  "notes": "unassociated label"
+ },
+ {
+  "case_id": "label-004",
+  "input": "<select><option>1</option></select>",
+  "expected_rule": "select-name",
+  "expected_verdict": "FAIL",
+  "expected_criteria": [
+   "4.1.2"
+  ],
+  "forbidden_criteria": [],
+  "notes": "select no name"
+ },
+ {
+  "case_id": "link-name-001",
+  "input": "<a href=\"/x\"></a>",
+  "expected_rule": "link-name",
+  "expected_verdict": "FAIL",
+  "expected_criteria": [
+   "2.4.4"
+  ],
+  "forbidden_criteria": [],
+  "notes": "empty link"
+ },
+ {
+  "case_id": "link-name-002",
+  "input": "<a href=\"/x\">Pricing</a>",
+  "expected_rule": "link-name",
+  "expected_verdict": "PASS",
+  "expected_criteria": [],
+  "forbidden_criteria": [],
+  "notes": "named link"
+ },
+ {
+  "case_id": "link-text-001",
+  "input": "<a href=\"/x\">click here</a>",
+  "expected_rule": "link-text-ambiguous",
+  "expected_verdict": "MANUAL_REVIEW",
+  "expected_criteria": [
+   "2.4.4"
+  ],
+  "forbidden_criteria": [],
+  "notes": "ambiguous"
+ },
+ {
+  "case_id": "heading-001",
+  "input": "<h1>A</h1><h3>B</h3>",
+  "expected_rule": "heading-order",
+  "expected_verdict": "FAIL",
+  "expected_criteria": [
+   "1.3.1"
+  ],
+  "forbidden_criteria": [],
+  "notes": "skipped level"
+ },
+ {
+  "case_id": "heading-002",
+  "input": "<h1>A</h1><h2>B</h2>",
+  "expected_rule": "heading-order",
+  "expected_verdict": "PASS",
+  "expected_criteria": [],
+  "forbidden_criteria": [],
+  "notes": "ok headings"
+ },
+ {
+  "case_id": "heading-003",
+  "input": "<h1>A</h1><h2></h2>",
+  "expected_rule": "empty-heading",
+  "expected_verdict": "FAIL",
+  "expected_criteria": [
+   "1.3.1",
+   "2.4.6"
+  ],
+  "forbidden_criteria": [],
+  "notes": "empty heading"
+ },
+ {
+  "case_id": "lang-001",
+  "input": "<html><body><main>x</main></body></html>",
+  "expected_rule": "html-has-lang",
+  "expected_verdict": "FAIL",
+  "expected_criteria": [
+   "3.1.1"
+  ],
+  "forbidden_criteria": [],
+  "notes": "missing lang"
+ },
+ {
+  "case_id": "lang-002",
+  "input": "<html lang=\"en\"><body><main>x</main></body></html>",
+  "expected_rule": "html-has-lang",
+  "expected_verdict": "PASS",
+  "expected_criteria": [],
+  "forbidden_criteria": [],
+  "notes": "has lang"
+ },
+ {
+  "case_id": "lang-003",
+  "input": "<html lang=\"e!\"><body><main>x</main></body></html>",
+  "expected_rule": "html-lang-valid",
+  "expected_verdict": "FAIL",
+  "expected_criteria": [
+   "3.1.1"
+  ],
+  "forbidden_criteria": [],
+  "notes": "invalid lang"
+ },
+ {
+  "case_id": "landmark-001",
+  "input": "<html lang=\"en\"><body><p>x</p></body></html>",
+  "expected_rule": "landmark-one-main",
+  "expected_verdict": "FAIL",
+  "expected_criteria": [
+   "2.4.1"
+  ],
+  "forbidden_criteria": [],
+  "notes": "no main"
+ },
+ {
+  "case_id": "landmark-002",
+  "input": "<html lang=\"en\"><body><main>x</main></body></html>",
+  "expected_rule": "landmark-one-main",
+  "expected_verdict": "PASS",
+  "expected_criteria": [],
+  "forbidden_criteria": [],
+  "notes": "main"
+ },
+ {
+  "case_id": "aria-001",
+  "input": "<div aria-foo=\"1\"></div>",
+  "expected_rule": "aria-valid-attr",
+  "expected_verdict": "FAIL",
+  "expected_criteria": [
+   "4.1.2"
+  ],
+  "forbidden_criteria": [],
+  "notes": "bad attr"
+ },
+ {
+  "case_id": "aria-002",
+  "input": "<div role=\"banana\"></div>",
+  "expected_rule": "aria-roles",
+  "expected_verdict": "FAIL",
+  "expected_criteria": [
+   "4.1.2"
+  ],
+  "forbidden_criteria": [],
+  "notes": "bad role"
+ },
+ {
+  "case_id": "aria-003",
+  "input": "<button aria-expanded=\"maybe\">x</button>",
+  "expected_rule": "aria-valid-attr-value",
+  "expected_verdict": "FAIL",
+  "expected_criteria": [
+   "4.1.2"
+  ],
+  "forbidden_criteria": [],
+  "notes": "bad value"
+ },
+ {
+  "case_id": "aria-004",
+  "input": "<input aria-labelledby=\"nope\">",
+  "expected_rule": "aria-valid-attr-value",
+  "expected_verdict": "FAIL",
+  "expected_criteria": [
+   "4.1.2"
+  ],
+  "forbidden_criteria": [],
+  "notes": "dangling idref"
+ },
+ {
+  "case_id": "aria-005",
+  "input": "<span id=\"l\">Name</span><input aria-labelledby=\"l\">",
+  "expected_rule": "aria-valid-attr-value",
+  "expected_verdict": "PASS",
+  "expected_criteria": [],
+  "forbidden_criteria": [],
+  "notes": "valid idref"
+ },
+ {
+  "case_id": "dup-id-001",
+  "input": "<label for=\"a\">x</label><input id=\"a\"><input id=\"a\">",
+  "expected_rule": "duplicate-id-aria",
+  "expected_verdict": "FAIL",
+  "expected_criteria": [
+   "4.1.2"
+  ],
+  "forbidden_criteria": [],
+  "notes": "dup id referenced"
+ },
+ {
+  "case_id": "dup-id-002",
+  "input": "<div id=\"a\"></div><div id=\"b\"></div>",
+  "expected_rule": "duplicate-id",
+  "expected_verdict": "PASS",
+  "expected_criteria": [],
+  "forbidden_criteria": [],
+  "notes": "unique ids"
+ },
+ {
+  "case_id": "contrast-001",
+  "input": "<p data-computed-color=\"#aaa\" data-computed-bg=\"#fff\">t</p>",
+  "expected_rule": "color-contrast",
+  "expected_verdict": "FAIL",
+  "expected_criteria": [
+   "1.4.3"
+  ],
+  "forbidden_criteria": [],
+  "notes": "low contrast"
+ },
+ {
+  "case_id": "contrast-002",
+  "input": "<p data-computed-color=\"#000\" data-computed-bg=\"#fff\">t</p>",
+  "expected_rule": "color-contrast",
+  "expected_verdict": "PASS",
+  "expected_criteria": [],
+  "forbidden_criteria": [],
+  "notes": "good contrast"
+ },
+ {
+  "case_id": "manual-001",
+  "input": "<button>Go</button>",
+  "expected_rule": "focus-order-manual",
+  "expected_verdict": "MANUAL_REVIEW",
+  "expected_criteria": [
+   "2.4.3"
+  ],
+  "forbidden_criteria": [],
+  "notes": "focus order needs keyboard test"
+ },
+ {
+  "case_id": "manual-002",
+  "input": "<button>Go</button>",
+  "expected_rule": "focus-visible-manual",
+  "expected_verdict": "MANUAL_REVIEW",
+  "expected_criteria": [
+   "2.4.7"
+  ],
+  "forbidden_criteria": [],
+  "notes": "focus visible needs browser"
+ },
+ {
+  "case_id": "manual-003",
+  "input": "<button>Go</button>",
+  "expected_rule": "target-size-manual",
+  "expected_verdict": "MANUAL_REVIEW",
+  "expected_criteria": [
+   "2.5.8"
+  ],
+  "forbidden_criteria": [],
+  "notes": "target size needs geometry"
+ }
+]
