@@ -1,10 +1,12 @@
 """Step 9a: FastAPI service. Run: python -m uvicorn app.api:app --port 8100"""
 from __future__ import annotations
 
+from pathlib import Path
 from typing import Literal
 
 import httpx
 from fastapi import FastAPI, HTTPException
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, model_validator
 
 from app import observability as obs
@@ -129,3 +131,10 @@ def ask(req: AskRequest) -> dict:
         raise HTTPException(422, "question is empty")
     _retriever = _retriever or HybridRetriever()
     return rag_ask(req.question, req.domain, _retriever, min(max(req.top_k, 1), 20))
+
+
+# Default UI: the React build (frontend/dist), served last so every API route above wins.
+# If it hasn't been built, nothing is mounted and the Streamlit UI (ui/) remains the fallback.
+_DIST = Path(__file__).resolve().parent.parent / "frontend" / "dist"
+if _DIST.is_dir():
+    app.mount("/", StaticFiles(directory=_DIST, html=True), name="ui")

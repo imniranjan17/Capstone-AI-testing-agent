@@ -6,3 +6,5 @@ __pycache__/
 data/
 a11y_service/data/
 install.log
+node_modules/
+frontend/dist/

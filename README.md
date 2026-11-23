@@ -18,6 +18,14 @@ python scripts/demo.py
 Runs `demo/page_v1.html` (baseline) -> same again (unchanged, no checks) -> `demo/page_v2.html` (changed, defects) -> findings, decisions, one human approval.
 
 ## Demo (UI)
+**Default: React UI** (`frontend/`). Build once, then FastAPI serves it at http://localhost:8100:
+```
+cd frontend && npm install && npm run build
+cd .. && python -m uvicorn app.api:app --port 8100
+```
+Frontend development with hot reload (proxies to the API on :8100): `cd frontend && npm run dev` -> http://localhost:5173.
+
+**Fallback: Streamlit UI** (`ui/`, unchanged; also used automatically if `frontend/dist` has not been built):
 ```
 python -m uvicorn app.api:app --port 8100
 python -m streamlit run ui/streamlit_app.py

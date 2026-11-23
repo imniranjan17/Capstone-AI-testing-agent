@@ -28,7 +28,9 @@ It is a LangGraph **pipeline with a parallel fan-out**, not a main-agent/sub-age
 - `app/branches/{a11y,validation,links,security}.py` — each returns `list[Finding]`; must never raise
 - `app/branches/mcp_tests.py` + `mcp_server/server.py` — MCP test cases over stdio (pin `mcp<2`)
 - `app/graph.py` — LangGraph pipeline; `app/policy.py` + `guidelines/fixes.yaml` — deterministic decisions; `app/patches.py` — optional LLM patch text
-- `app/store.py` — run history + review queue; `app/api.py` — FastAPI; `ui/streamlit_app.py` — UI
+- `app/store.py` — run history + review queue; `app/api.py` — FastAPI (also serves `frontend/dist` at `/` when built)
+- `frontend/` — **default UI** (React + Vite, JS). `src/api/client.js` is the only code that calls the API; `pages/` = Run, Review, History, Ask, Audit; `components/` = shared widgets; `hooks/` = `useAsync`, `useSessionState`. HashRouter so client routes never collide with API paths. Build: `cd frontend && npm install && npm run build`; dev: `npm run dev` (:5173, proxies to :8100). New API endpoint -> add to `client.js` and the proxy list in `vite.config.js`.
+- `ui/streamlit_app.py` + `ui/pages/audit.py` — **fallback UI** (kept in sync by hand; no longer the default)
 - `app/rag/{docs,retriever,answer}.py` — Q&A over findings: docs = latest run per page grouped by domain; BM25 + dense (bge-small, in-memory) fused with RRF; metadata filter (domain) before ranking; exact counts come from `domain_stats`, not retrieval; LLM optional (extractive fallback). Endpoints `/domains`, `/stats`, `/ask`; UI page "Ask (RAG)".
 
 - `app/observability.py` — per-node spans, run traces, LLM token/cost ledger, runtime I/O contract checks (SQLite, same db; stores counts/sizes only, never HTML/prompts). Endpoints `/audit/overview|contracts|traces/{run_id}`; dashboard `ui/pages/audit.py` at `/audit`. New graph nodes/LLM calls must be registered in `CONTRACTS` and wrapped with `obs.traced` / `obs.record_llm`.
